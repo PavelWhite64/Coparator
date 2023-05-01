@@ -81,4 +81,73 @@ public class AviaSoulsTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void search1() {
+        Comparator<Ticket> comparator = new TicketTimeComparator();
+
+        manager.add(ticket1);
+        manager.add(ticket2);
+        manager.add(ticket3);
+        manager.add(ticket4);
+        manager.add(ticket5);
+        manager.add(ticket6);
+        manager.add(ticket7);
+        manager.add(ticket8);
+        manager.add(ticket9);
+        manager.add(ticket10);
+        manager.add(ticket11);
+        manager.add(ticket12);
+
+        Ticket[] expected = {ticket12};
+        Ticket[] actual = manager.search("HR center", "Erie International Airport");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void searhSeveral() {
+        Comparator<Ticket> comparator = new TicketTimeComparator();
+
+        manager.add(ticket1);
+        manager.add(ticket2);
+        manager.add(ticket3);
+        manager.add(ticket4);
+        manager.add(ticket5);
+        manager.add(ticket6);
+        manager.add(ticket7);
+        manager.add(ticket8);
+        manager.add(ticket9);
+        manager.add(ticket10);
+        manager.add(ticket11);
+        manager.add(ticket12);
+
+        Ticket[] expected = {ticket9, ticket3};
+        Ticket[] actual = manager.search("Домодедово", "Анталья");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void searchZero() {
+        Comparator<Ticket> comparator = new TicketTimeComparator();
+
+        manager.add(ticket1);
+        manager.add(ticket2);
+        manager.add(ticket3);
+        manager.add(ticket4);
+        manager.add(ticket5);
+        manager.add(ticket6);
+        manager.add(ticket7);
+        manager.add(ticket8);
+        manager.add(ticket9);
+        manager.add(ticket10);
+        manager.add(ticket11);
+        manager.add(ticket12);
+
+        Ticket[] expected = {};
+        Ticket[] actual = manager.search("Шереметьево", "Астана");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
